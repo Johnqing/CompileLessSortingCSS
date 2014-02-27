@@ -217,9 +217,11 @@ function onEnd(){
 
 function cssBuild(){
     var cssPath = defConf.workspace + defConf.input;
-     function build(cssfile){
-         if(isDirIgnore(cssfile)) return;
-         oneCssBuild(cssfile);
+     function build(files){
+         files.forEach(function(file){
+             if(isDirIgnore(file)) return;
+             oneCssBuild(file);
+         });
      }
     walk(cssPath, build);
 }
